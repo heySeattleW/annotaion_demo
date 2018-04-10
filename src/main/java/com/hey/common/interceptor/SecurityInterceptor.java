@@ -55,7 +55,7 @@ public class SecurityInterceptor extends HandlerInterceptorAdapter {
                 }
             }
         }
-        // 拦截之后应该返回公共结果, 这里没做处理
+        // 拦截之后应该返回公共结果
         response.setContentType("application/json;charset=utf-8");
         BaseResult result = new BaseResult();
         int code = CodeStatus.NO_PERMISSION.getCode();
