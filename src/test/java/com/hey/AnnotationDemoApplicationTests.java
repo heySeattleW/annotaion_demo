@@ -1,5 +1,7 @@
 package com.hey;
 
+import com.hey.common.mq.rabbitmq.producer.HelloSender;
+import com.hey.common.redis.RedisUtil;
 import com.hey.web.controller.TestController;
 import com.hey.web.service.HelloService;
 import org.junit.Before;
@@ -22,6 +24,12 @@ public class AnnotationDemoApplicationTests {
 
 	@Autowired
 	private HelloService helloService;
+
+	@Autowired
+	private RedisUtil redisUtil;
+
+	@Autowired
+	private HelloSender helloSender;
 
 	//构造controller的测试
 	private MockMvc mockMvc;
@@ -47,7 +55,21 @@ public class AnnotationDemoApplicationTests {
 		String url = "/hello";
 		MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get(url).accept(MediaType.APPLICATION_JSON)).andReturn();
 		logger.info(result.getResponse().getContentAsString()+"+++++");
+	}
 
+	//测试redis
+	@Test
+	public void testRedis()throws Exception{
+		redisUtil.set("name","hey",10);
+		System.out.println(redisUtil.get("name"));
+		System.out.println(redisUtil.getExpire("name"));
+		System.out.println(redisUtil.expire("name",20));
+		System.out.println(redisUtil.getExpire("name"));
+	}
+
+	@Test
+	public void testRabbitMQ()throws Exception{
+		helloSender.send();
 	}
 
 }
