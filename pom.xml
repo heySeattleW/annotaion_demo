@@ -91,6 +91,15 @@
 			<artifactId>spring-boot-test</artifactId>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-all</artifactId>
+			<version>4.0.33.Final</version>
+		</dependency>
+
+
+
 		<!--springboot-admin-->
 		<dependency>
 			<groupId>de.codecentric</groupId>
@@ -102,6 +111,14 @@
 			<artifactId>spring-boot-admin-server-ui</artifactId>
 			<version>1.5.0</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.9</version>
+		</dependency>
+
 
 	</dependencies>
 

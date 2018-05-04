@@ -1,6 +1,7 @@
 package com.hey;
 
 import com.hey.common.mq.rabbitmq.producer.HelloSender;
+import com.hey.common.mq.rabbitmq.queue.MyQueue;
 import com.hey.common.redis.RedisUtil;
 import com.hey.web.controller.TestController;
 import com.hey.web.service.HelloService;
@@ -69,7 +70,12 @@ public class AnnotationDemoApplicationTests {
 
 	@Test
 	public void testRabbitMQ()throws Exception{
-		helloSender.send();
+//		new MyQueue().queue();
+		//helloSender.send();
+		for (int i=0;i<100;i++){
+			// Thread.sleep(10);
+			helloSender.send(i);
+		}
 	}
 
 }
